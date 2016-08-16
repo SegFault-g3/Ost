@@ -20,8 +20,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 15,
-						"Y": 12
+						"X": 47,
+						"Y": 44
 					}
 				}
 			},
@@ -40,11 +40,11 @@
 				"panelColor": "#D8D8D8",
 				"panel": {
 					"isOpen": "true",
+					"pathVisible": true,
 					"position": {
-						"X": 58,
-						"Y": 437
-					},
-					"pathVisible": true
+						"X": 102,
+						"Y": 433
+					}
 				}
 			},
 			"Employe": {
@@ -115,17 +115,62 @@
 				},
 				{
 					"name": "commentaires",
+					"kind": "storage",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				},
 				{
 					"name": "assignCollection",
+					"kind": "relatedEntities",
 					"scope": "public",
-					"reversePath": true,
-					"path": "article",
 					"type": "AssignCollection",
-					"kind": "relatedEntities"
+					"reversePath": true,
+					"path": "article"
+				}
+			]
+		},
+		{
+			"name": "Assign",
+			"className": "Assign",
+			"collectionName": "AssignCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "chef",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Chef",
+					"path": "Chef"
+				},
+				{
+					"name": "sous_chef",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Sous_Chef",
+					"path": "Sous_Chef"
+				},
+				{
+					"name": "employe",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Employe",
+					"path": "Employe"
+				},
+				{
+					"name": "article",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Article",
+					"path": "Article"
 				}
 			]
 		},
@@ -197,18 +242,19 @@
 				},
 				{
 					"name": "assignCollection",
+					"kind": "relatedEntities",
 					"scope": "public",
-					"reversePath": true,
-					"path": "chef",
 					"type": "AssignCollection",
-					"kind": "relatedEntities"
+					"reversePath": true,
+					"path": "chef"
 				}
 			]
 		},
 		{
-			"name": "Employé",
+			"name": "Employe",
 			"className": "Employe",
 			"collectionName": "EmployeCollection",
+			"matchTable": "Employé",
 			"scope": "public",
 			"attributes": [
 				{
@@ -243,13 +289,7 @@
 					"kind": "calculated",
 					"scope": "public",
 					"type": "string",
-					"scriptKind": "javascript",
-					"onGet": [
-						{
-							"from": "model.Employe.prenom_nom.onGet",
-							"userDefined": true
-						}
-					]
+					"scriptKind": "javascript"
 				},
 				{
 					"name": "poste",
@@ -265,14 +305,13 @@
 				},
 				{
 					"name": "assignCollection",
+					"kind": "relatedEntities",
 					"scope": "public",
-					"reversePath": true,
-					"path": "employe",
 					"type": "AssignCollection",
-					"kind": "relatedEntities"
+					"reversePath": true,
+					"path": "employe"
 				}
-			],
-			"matchTable": "Employé"
+			]
 		},
 		{
 			"name": "Sous_Chef",
@@ -334,56 +373,13 @@
 				},
 				{
 					"name": "assignCollection",
+					"kind": "relatedEntities",
 					"scope": "public",
-					"reversePath": true,
-					"path": "sous_chef",
 					"type": "AssignCollection",
-					"kind": "relatedEntities"
-				}
-			]
-		},
-		{
-			"collectionName": "AssignCollection",
-			"className": "Assign",
-			"attributes": [
-				{
-					"name": "ID",
-					"kind": "storage",
-					"type": "long",
-					"autosequence": "true",
-					"unique": "true",
-					"primKey": "true"
-				},
-				{
-					"name": "chef",
-					"scope": "public",
-					"path": "Chef",
-					"type": "Chef",
-					"kind": "relatedEntity"
-				},
-				{
-					"name": "sous_chef",
-					"scope": "public",
-					"path": "Sous_Chef",
-					"type": "Sous_Chef",
-					"kind": "relatedEntity"
-				},
-				{
-					"name": "employe",
-					"scope": "public",
-					"path": "Employe",
-					"type": "Employe",
-					"kind": "relatedEntity"
-				},
-				{
-					"name": "article",
-					"scope": "public",
-					"path": "Article",
-					"type": "Article",
-					"kind": "relatedEntity"
+					"reversePath": true,
+					"path": "sous_chef"
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }
